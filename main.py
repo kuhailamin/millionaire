@@ -18,5 +18,15 @@ Q15_AMOUNT=Q14_AMOUNT*2
 print("I'm George Gherdahi. Welcome to Who Wants to Be a Millionare.")
 name=input("Introduce yourself to the audience")
 print("Welcome "+name+" to the show! We are excited to have you!")
-answer=input("So, tell us. What will you do if you win the million dirhams?")
-print("Wow! What a great idea!")
+answer=input("So, tell us. What will you do if you win the million dirhams? 1: Invest it, 2: Buy one million meals and feed the hungry, 3: Travel the world, 4: Buy a fancy car, 5: Save it in the bank")
+if answer=="1":
+    print("Wow! smart idea! Good luck")
+elif answer=="2":
+    print("You are a rare gem! Very generous! We need people like you! God bless you")
+elif answer=="3":
+    print("Nice! But, do you need 1M Drhs for that? Interesting")
+elif answer=="4":
+    print("I'm sure you will enjoy it, but really 1 Mh Drhs for a car? Why? You can rent it for a month for much less money")
+elif answer=="5":
+    print('You should reconsider! Because money loses value as time passes by. Besides, money is either digits in the bank or a piece of paper')
+
