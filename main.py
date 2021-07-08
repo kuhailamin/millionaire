@@ -1,22 +1,16 @@
-QUESTIONS=["What is the capital of the UAE?","What is the boiling temperature of water?"]
-OPTIONS=[["Abu Dhabi","Dubai","Sharjah","RAK"],["60","85","100","70"]]
-ANSWERS=[0,2]
-Q1_AMOUNT=100
-Q2_AMOUNT=200
-Q3_AMOUNT=300
-Q4_AMOUNT=500
-Q5_AMOUNT=1000
-Q6_AMOUNT=Q5_AMOUNT*2 #2000
-Q7_AMOUNT=Q6_AMOUNT*2 #4000
-Q8_AMOUNT=Q7_AMOUNT*2 #8000
-Q9_AMOUNT=Q8_AMOUNT*2 #16000
-Q10_AMOUNT=Q9_AMOUNT*2 #32000
-Q11_AMOUNT=Q10_AMOUNT*2 #64000
-Q12_AMOUNT=125000
-Q13_AMOUNT=Q12_AMOUNT*2 #250000
-Q14_AMOUNT=Q13_AMOUNT*2 #500000
-Q15_AMOUNT=Q14_AMOUNT*2
-AMOUNTS=[Q1_AMOUNT,Q2_AMOUNT,Q3_AMOUNT,Q4_AMOUNT,Q5_AMOUNT,Q6_AMOUNT,Q7_AMOUNT,Q8_AMOUNT,Q9_AMOUNT,Q10_AMOUNT,Q11_AMOUNT,Q12_AMOUNT,Q13_AMOUNT,Q14_AMOUNT,Q15_AMOUNT]
+from playsound import playsound
+QUESTIONS=[]
+handle = open("Questions.txt", "r")
+for line in handle:
+    question_info=line.split(",")
+    question={
+        "question":question_info[0],
+        "options":[question_info[1],question_info[2],question_info[3],question_info[4]],
+        "answer":int(question_info[5])
+    }
+    QUESTIONS.append(question)
+
+AMOUNTS=[100,200,300,400,500,1000,2000,4000,8000,16000,32000,64000,125000,250000,500000,1000000]
 
 
 print("I'm George Gherdahi. Welcome to Who Wants to Be a Millionare.")
@@ -36,17 +30,21 @@ elif answer=="5":
 
 for index in range(len(QUESTIONS)):
     Q=QUESTIONS[index]
-    print(Q)
-    Options=OPTIONS[index]
+    print(Q["question"])
+    Options=Q["options"]
     print("Option 1:",Options[0])
     print("Option 2:", Options[1])
     print("Option 3:", Options[2])
-    print("Option 3:", Options[3])
+    print("Option 4:", Options[3])
     answer=int(input("What is the answer? 1-4"))
     answer=answer-1
-    if answer==ANSWERS[index]:
+    if answer==Q["answer"]:
         print("Well done! You got ",AMOUNTS[index])
     else:
         print("Sorry. You lost")
+        playsound('disappointed.mp3')
         break
+else:
+    print("Congratulations! you won the million dirhmas")
+    playsound('applaud.mp3')
 
